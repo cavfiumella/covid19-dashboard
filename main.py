@@ -215,8 +215,8 @@ def main(data_dir: Path = Path("share/dashboard"), /):
             [df.loc[:, ["totale_positivi", "tamponi"]]],
             [
                 df.loc[:, [
-                        "totale_positivi_test_molecolare",
-                        "tamponi_test_antigenico_rapido"
+                    "totale_positivi_test_molecolare",
+                    "tamponi_test_antigenico_rapido"
                 ]],
                 df.loc[:, [
                     "totale_positivi_test_antigenico_rapido",

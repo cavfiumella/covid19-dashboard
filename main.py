@@ -212,23 +212,27 @@ def main(data_dir: Path = Path("share/dashboard"), /):
         cols = st.columns(2),
 
         lines_values = [
-            [df.loc[:, ["totale_positivi", "tamponi"]]],
+
+            # nuovi_positivi is not a cumulative variable
+            [pd.concat([df.nuovi_positivi, df.tamponi.diff()], axis=1)],
+
             [
                 df.loc[:, [
                     "totale_positivi_test_molecolare",
                     "tamponi_test_antigenico_rapido"
-                ]],
+                ]].diff(),
+
                 df.loc[:, [
                     "totale_positivi_test_antigenico_rapido",
                     "tamponi_test_antigenico_rapido"
-                ]]
+                ]].diff()
             ]
         ],
 
         lines_names = [[None], ["test_molecolare", "test_antigenico_rapido"]],
 
         lines_func = lambda x: (
-            100 * x.iloc[:,0].diff() / x.iloc[:,1].diff()
+            100 * x.iloc[:,0] / x.iloc[:,1]
         ).rolling(mov_avg_days, center=True).mean(),
 
         axes_titles = [[

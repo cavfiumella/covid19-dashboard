@@ -1,6 +1,9 @@
 In questa pagina è possibile visualizzare i dati relativi a contagi e
 vaccinazioni da Covid-19 in Italia.
 
+Se vuoi ricevere aggiornamenti su **_Telegram_** collegati a questo [link]
+(https://t.me/cavfiumella_covid19_bot).
+
 A seguire sono presenti due widgets che permettono di visualizzare i dati delle
 singole regioni ([qui](#area)) e cambiare il numero di giorni da usare come
 intervallo nel calcolo delle medie mobili di alcuni grafici ([qui]

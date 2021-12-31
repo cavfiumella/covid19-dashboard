@@ -67,7 +67,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
     area = "Italia" # default gographical area
     mov_avg_days = 7 # default days for moving average window
 
-    st.subheader("Dati")
+    st.header("Dati")
     cols = st.columns(3)
 
     # databases
@@ -177,7 +177,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
 # contagions data
 
-    st.header("Contagi")
+    st.title("Contagi")
     st.markdown(read_text(data_dir.joinpath("contagions.md")))
 
     df = db.get_df(
@@ -186,7 +186,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
         parse_dates=["data"]
     ).set_index("data")
 
-    st.subheader("Tamponi eseguiti")
+    st.header("Tamponi eseguiti")
 
     plot_section(
         cols = st.columns(2),
@@ -206,7 +206,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
     )
 
     # positives percentage over tests
-    st.subheader("Tasso di positività", anchor="tasso-di-positività")
+    st.header("Tasso di positività", anchor="tasso-di-positività")
 
     plot_section(
         cols = st.columns(2),
@@ -245,7 +245,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
     )
 
     # infections
-    st.subheader("Casi positivi")
+    st.header("Casi positivi")
 
     plot_section(
         cols = st.columns(2),
@@ -270,7 +270,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
         ]
     )
 
-    st.subheader("Casi positivi per gravità")
+    st.header("Casi positivi per gravità")
 
     plot_section(
         cols=st.columns(2),
@@ -303,7 +303,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
     )
 
     # healed and deceased
-    st.subheader("Dimessi guariti e deceduti")
+    st.header("Dimessi guariti e deceduti")
 
     plot_section(
         cols = st.columns(2),
@@ -325,7 +325,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
 # vaccination data
 
-    st.header("Vaccinazioni")
+    st.title("Vaccinazioni")
     st.markdown(read_text(data_dir.joinpath("vaccines.md")))
 
     # database
@@ -374,7 +374,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
     # total deliveries and doses
 
-    st.subheader("Consegne e somministrazioni")
+    st.header("Consegne e somministrazioni")
 
     plot_section(
         cols = st.columns(2),
@@ -389,7 +389,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
     # temporal developing of deliveries and doses by furniture
 
-    st.subheader("Fornitori")
+    st.header("Fornitori")
 
     furnitures = {
         key: df[key].fornitore.drop_duplicates().sort_values().tolist()
@@ -426,7 +426,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
     # used doses temporal developing by age, gender and type
 
-    st.subheader("Dettaglio somministrazioni")
+    st.header("Dettaglio somministrazioni")
 
     ages = df["doses"].fascia_anagrafica.drop_duplicates().sort_values(
     ).tolist()
@@ -467,7 +467,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
     plot_section(
         cols = st.columns(2),
-        cols_titles = ["Tipologia", None],
+        cols_titles = ["Tipologia di dose", None],
         lines_values = [[df["doses"].loc[:,T] for T in types], None],
         lines_names = [types, None],
         lines_func = lambda x: x.groupby("data").sum(
@@ -483,7 +483,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
     # vaccination progress by age and type
 
-    st.subheader("Progresso somministrazioni")
+    st.header("Progresso somministrazioni")
 
     ages = df["doses"].fascia_anagrafica.drop_duplicates().sort_values(
     ).tolist()
@@ -495,7 +495,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
     plot_section(
         cols = st.columns(2),
-        cols_titles = ["Età", "Tipologia"],
+        cols_titles = ["Età", "Tipologia di dose"],
 
         lines_values = [
             [

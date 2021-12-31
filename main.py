@@ -248,9 +248,26 @@ def main(data_dir: Path = Path("share/dashboard"), /):
     st.subheader("Casi positivi")
 
     plot_section(
-        cols=st.columns(2),
-        lines_values = [[df.totale_positivi], None],
-        axes_titles = [["data", "valore assoluto"]]*2
+        cols = st.columns(2),
+        cols_titles = ["Totale postivi", "Nuovi positivi"],
+
+        lines_values = [
+            [df.totale_positivi],
+            [df.nuovi_positivi.rolling(mov_avg_days, center=True).mean()]
+        ],
+
+        lines_names = [["totale_positivi"], ["nuovi_positivi"]],
+
+        axes_titles = [
+            ["data", "valore assoluto"],
+            [
+                "data",
+                "valore giornaliero{}".format(
+                    f" (media mobile a {mov_avg_days} giorni)" \
+                    if mov_avg_days > 1 else ""
+                )
+            ]
+        ]
     )
 
     st.subheader("Casi positivi per gravità")

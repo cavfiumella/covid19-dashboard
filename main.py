@@ -1,5 +1,5 @@
 
-from helpers import contagions, vaccines
+from helpers.database import Contagions, Vaccines
 
 from argparse import ArgumentParser
 import logging
@@ -72,7 +72,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
     # databases
     with st.spinner("Aggiornamento dati..."):
-        db = contagions.Database()
+        db = Contagions()
 
     # change geographical area
     with cols[0]:
@@ -330,7 +330,7 @@ def main(data_dir: Path = Path("share/dashboard"), /):
 
     # database
     with st.spinner("Aggiornamento dati..."):
-        db = vaccines.Database()
+        db = Vaccines()
 
     # dataframes
     df = {}

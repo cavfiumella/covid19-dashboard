@@ -9,6 +9,8 @@ Sebbene non siano propriamente una tipologia di dose, i casi di ***pregressa
 infezione*** vengono raggruppati insieme al tipo di dose.
 Questi infatti sono da considerarsi sostitutivi ad una dose di vaccino.
 
+***Tutti i grafici sono interattivi.***
+
 I dati vengono scaricati dalla repository ufficiale
 [italia/covid19-opendata-vaccini]
 (https://github.com/italia/covid19-opendata-vaccini).

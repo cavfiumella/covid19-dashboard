@@ -1,3 +1,6 @@
+# venv
+.venv*/
+
 # database files
 share/contagions
 share/vaccines

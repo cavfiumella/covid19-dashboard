@@ -2,8 +2,8 @@
 .venv*/
 
 # database files
-share/contagions
-share/vaccines
+*.csv
+*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
